@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/point") //основной сервлет для передачи параметров
+@WebServlet("/main") //основной сервлет для передачи параметров
 public class ControllerServlet extends HttpServlet {
     @EJB
     private Points points;
