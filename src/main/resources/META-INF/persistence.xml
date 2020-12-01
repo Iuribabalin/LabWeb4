@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence xmlns="http://java.sun.com/xml/ns/persistence" version="2.0">
+    <persistence-unit name="JPAUNIT">
+        <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+        <class>model.Point</class>
+        <class>model.User</class>
+        <properties>
+
+            <property name="hibernate.connection.url" value="jdbc:postgresql://pg:5432/studs"/>
+            <property name="hibernate.connection.driver_class" value="org.postgresql.Driver"/>
+            <property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQL9Dialect"/>
+            <property name="hibernate.connection.username" value="s284731"/>
+            <property name="hibernate.connection.password" value="yaf342"/>
+        </properties>
+    </persistence-unit>
+</persistence>
