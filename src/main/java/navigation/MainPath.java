@@ -22,18 +22,24 @@ public class MainPath {
     private Points points;
 
     @POST
-    //Добавляет точку и возвращает остальные
+    //Дафак здесь вообще происходит а
     public String getJsonAllPoints(String json) throws JSONException {
         JSONObject object = new JSONObject(json);
+        String pointsFlag = object.optString("pointsFlag");
+
         String token = object.optString("token");
         String x = object.optString("x");
         String y = object.optString("y");
         String r = object.optString("r");
 
-        String result = points.addPoint(token, x, y, r);
-        if (result.equals("Unauthorized") || result.equals("Bad format")) {
-            return "403";
+        if (Integer.parseInt(pointsFlag) == 1 || pointsFlag == "true") {
+            String result = points.addPoint(token, x, y, r);
+            if (result.equals("Unauthorized") || result.equals("Bad format")) {
+                return "403";
+            } else return result;
         }
-        else return result;
+        else {
+            return points.getPoints(token);
+        }
     }
 }
