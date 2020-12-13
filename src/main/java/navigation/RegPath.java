@@ -30,8 +30,8 @@ public class RegPath {
 
         if(result.equals("User already exists") || result.equals("Error")){
             return "403";
-        }
-        else return result;
+        }else
+            return result;
     }
 }
 
