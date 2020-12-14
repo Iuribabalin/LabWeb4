@@ -3,10 +3,7 @@ package DataBase;
 import model.User;
 
 import javax.ejb.*;
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
-import javax.persistence.PersistenceException;
+import javax.persistence.*;
 import java.util.Base64;
 
 @Stateful // Методы управленя пользователями
@@ -19,7 +16,8 @@ public class UserDB {
 
             final User entity = new User();
             entity.setLogin(login);
-            entity.setPassword(Base64.getEncoder().encodeToString((password).getBytes())); //Кодирование пароля
+            //entity.setPassword(Base64.getEncoder().encodeToString((password).getBytes())); //Кодирование пароля
+            entity.setPassword(password);
             em.getTransaction().begin();
             em.persist(entity);
             em.getTransaction().commit();
@@ -45,11 +43,27 @@ public class UserDB {
         return true;
     }
 
-    public boolean checkPassword(User login, String password) { //Проверка пароля
-        return login.getPassword().equals(new String(Base64.getDecoder().decode((password)))); //Декодирование
+    public boolean checkPassword(String login, String password) { //Проверка пароля
+        User user = findUser(login);
+
+        //return user.getPassword().equals(new String(Base64.getDecoder().decode((password)))); //Декодирование
+        return user.getPassword().equals(password);
     }
 
-    public String findUser(String login) { //Поиск существующего логина
-        return String.valueOf(em.createQuery(" from User where login = :login").getResultList());
+    public String ifExist(String login) { //Поиск существующего логина
+        try {
+            User user = (User) em.createQuery(" from User u where u.login = :login")
+                    .setParameter("login", login).getSingleResult();
+            if (user == null)
+                return "false1";
+            else
+                return "true";
+        } catch (NoResultException e){ return "false2"; }
+    }
+
+    public User findUser(String login) {
+        User user = (User) em.createQuery(" from User u where u.login = :login")
+                .setParameter("login", login).getSingleResult();
+        return user;
     }
 }

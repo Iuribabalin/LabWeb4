@@ -23,7 +23,7 @@ public class LoginPath {
     @POST
     public String checkAuth(String json) throws JSONException {
         JSONObject object = new JSONObject(json);
-        String username = object.optString("username");
+        String username = object.optString("userName");
         String password = object.optString("pass");
 
         return auth.login(username, password);

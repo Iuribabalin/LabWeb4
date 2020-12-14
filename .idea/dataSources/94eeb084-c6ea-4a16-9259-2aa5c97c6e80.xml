@@ -791,7 +791,7 @@ false posixrules
       <ObjectId>13318</ObjectId>
       <Comment>default administrative connection database</Comment>
       <Owner>postgres</Owner>
-      <IntrospectionStateNumber>519</IntrospectionStateNumber>
+      <IntrospectionStateNumber>531</IntrospectionStateNumber>
       <Current>1</Current>
     </database>
     <role id="3" parent="1" name="pg_execute_server_program">
@@ -862,7 +862,7 @@ UC/10
 </Acl>
       <StateNumber>276</StateNumber>
       <Owner>postgres</Owner>
-      <IntrospectionStateNumber>520</IntrospectionStateNumber>
+      <IntrospectionStateNumber>532</IntrospectionStateNumber>
       <Current>1</Current>
     </schema>
     <extension id="17" parent="2" name="adminpack">
@@ -979,13 +979,11 @@ UC/10
     </sequence>
     <table id="31" parent="16" name="points">
       <ObjectId>16401</ObjectId>
-      <Outdated>1</Outdated>
       <Owner>postgres</Owner>
       <StateNumber>518</StateNumber>
     </table>
     <table id="32" parent="16" name="users">
       <ObjectId>16406</ObjectId>
-      <Outdated>1</Outdated>
       <Owner>postgres</Owner>
       <StateNumber>518</StateNumber>
     </table>
