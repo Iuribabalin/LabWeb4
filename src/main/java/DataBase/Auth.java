@@ -29,7 +29,7 @@ public class Auth {
     public String login(String login, String password) { //Вход - передача логина и пароля
         String user = userDB.ifExist(login);
         if (user.equals("false1") || user.equals("false2")){
-            return "false;-2";
+            return "false; ";
         }
         else if (userDB.checkPassword(login, password)) {
             //userDB.findUser(user).generateAccessToken();
@@ -38,7 +38,7 @@ public class Auth {
 
             return "true;" + login;
         }
-        return "false;-1";
+        return "false; ";
     }
 
     public User getUserByToken(String login){ //Пооск пользователя по переданным данным дальнейшего взятия точек
