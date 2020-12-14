@@ -20,8 +20,6 @@
       <configuration>
         <setting name="validation-enabled" value="true" />
         <datasource-mapping>
-          <factory-entry name="JPAUNIT" />
-          <factory-entry name="LabWeb4" />
           <factory-entry name="default" />
         </datasource-mapping>
         <naming-strategy-map />

@@ -1,37 +1,43 @@
 package DataBase;
 
 import model.User;
-import javax.ejb.Stateful;
+
+import javax.ejb.*;
 import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.persistence.PersistenceException;
+import javax.transaction.Transaction;
 import java.util.Base64;
 
 @Stateful // Методы управленя пользователями
 public class UserDB {
-    private final EntityManager entityManager = Persistence.
-            createEntityManagerFactory("default").
-            createEntityManager();
+    private final EntityManagerFactory factory = Persistence.createEntityManagerFactory("default");
+    private final EntityManager em = factory.createEntityManager();
 
     public User createUser(String login, String password) { //Создание пользователя
         try {
+
             final User entity = new User();
             entity.setLogin(login);
             entity.setPassword(Base64.getEncoder().encodeToString((password).getBytes())); //Кодирование пароля
-            entityManager.persist(entity);
-            entityManager.flush();
+            em.getTransaction().begin();
+            em.persist(entity);
+            em.getTransaction().commit();
 
             return entity;
 
         } catch (PersistenceException e) {
             return null;
+
         }
     }
 
     public boolean saveUser(User user) { //Обновление сведений о пользователе
         try {
-            entityManager.merge(user);
-            entityManager.flush();
+            em.getTransaction().begin();
+            em.persist(user);
+            em.getTransaction().commit();
         } catch (IllegalArgumentException e) {
             e.printStackTrace();
             return false;
@@ -45,7 +51,7 @@ public class UserDB {
     }
 
     public User findUser(String login) { //Поиск существующего логина
-        return entityManager.createQuery(" from User where login = :login", User.class)
-                .setParameter("login", login).getSingleResult();
+        return em.createQuery(" from User where login = :login", User.class)
+                .setParameter("login", login).getResultList().stream().findAny().orElse(null);
     }
 }

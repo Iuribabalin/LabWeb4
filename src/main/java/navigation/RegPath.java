@@ -23,15 +23,12 @@ public class RegPath {
     @POST
     public String checkReg(String json) throws JSONException {
         JSONObject object = new JSONObject(json);
-        String username = object.optString("username");
-        String password = object.optString("pass");
+        String username = object.optString("userNameReg");
+        String password = object.optString("passReg");
 
         String result = auth.register(username, password);
 
-        if(result.equals("User already exists") || result.equals("Error")){
-            return "403";
-        }else
-            return result;
+        return result;
     }
 }
 

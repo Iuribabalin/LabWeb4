@@ -7,16 +7,20 @@ import javax.persistence.*;
 public class Point {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "id_Sequence")
-
+    @SequenceGenerator(name = "id_Sequence", sequenceName = "ID_SEQ")
     private Long id;
 
     @Column(name = "x")
     private Double x;
+
     @Column(name = "y")
     private Double y;
+
     @Column(name = "r")
     private Double r;
 
+    @ManyToOne
+    @JoinColumn(name = "owner_id", referencedColumnName = "id")
     private User owner;
 
     public User getOwner() {
