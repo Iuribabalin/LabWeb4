@@ -12,35 +12,38 @@ public class Auth {
     private UserDB userDB;
 
     public String register(String login, String password) { //Регситрация
-        User user = userDB.findUser(login);
+       /* User user = userDB.findUser(login);
         if (user != null) { //Проверка на существующего пользователя
-            return "User already exists";
+            return "false";
         }
         user = userDB.createUser(login, password);
         if (user == null) {
-            return "Error";
+            return "false";
         }
-        return user.getId().toString();
+        return "true";*/
+        return "";
     }
 
     public String login(String login, String password) { //Вход - передача логина и пароля
-        User user = userDB.findUser(login);
-        if (user == null) {
-            return "No such user";
+        return userDB.findUser(login);
+        //User user = userDB.findUser(login);
+        /*if (user == null) {
+            return "false;-2";
         }
         if (userDB.checkPassword(user, password)) {
             user.generateAccessToken();
             userDB.saveUser(user);
             //Кодирование логина и пароля
-            return Base64.getEncoder().encodeToString((login + (char) (31) + user.getAccessToken()).getBytes(StandardCharsets.UTF_8));
+            return "true;" + Base64.getEncoder().encodeToString((login + (char) (31) + user.getAccessToken()).getBytes(StandardCharsets.UTF_8));
         }
-        return "Not authorized";
+        return "false;-1";*/
     }
 
     public User getUserByToken(String data){ //Пооск пользователя по переданным данным дальнейшего взятия точек
-        String token = new String(Base64.getDecoder().decode(data), StandardCharsets.UTF_8);
+        /*String token = new String(Base64.getDecoder().decode(data), StandardCharsets.UTF_8);
         String[] split = token.split(String.valueOf((char) (31)));
         String username = split[0];
-        return userDB.findUser(username);
+        return userDB.findUser(username);*/
+        return null;
     }
 }

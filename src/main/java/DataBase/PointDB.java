@@ -46,8 +46,8 @@ public class PointDB {
         return true;
     }
 
-    public List<Point> findPoint(User owner) { //Поиск точек у пользователя
-        return em.createQuery("from Point where owner = :owner ", Point.class)
+    public List findPoint(User owner) { //Поиск точек у пользователя
+        return em.createQuery("from Point where owner = :owner ")
                 .setParameter("owner", owner).getResultList();
     }
 }

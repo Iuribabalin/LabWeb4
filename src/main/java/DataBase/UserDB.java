@@ -7,7 +7,6 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.persistence.PersistenceException;
-import javax.transaction.Transaction;
 import java.util.Base64;
 
 @Stateful // Методы управленя пользователями
@@ -50,8 +49,7 @@ public class UserDB {
         return login.getPassword().equals(new String(Base64.getDecoder().decode((password)))); //Декодирование
     }
 
-    public User findUser(String login) { //Поиск существующего логина
-        return em.createQuery(" from User where login = :login", User.class)
-                .setParameter("login", login).getResultList().stream().findAny().orElse(null);
+    public String findUser(String login) { //Поиск существующего логина
+        return String.valueOf(em.createQuery(" from User where login = :login").getResultList());
     }
 }

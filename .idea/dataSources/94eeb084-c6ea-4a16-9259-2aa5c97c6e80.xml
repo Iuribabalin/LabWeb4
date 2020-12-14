@@ -979,11 +979,13 @@ UC/10
     </sequence>
     <table id="31" parent="16" name="points">
       <ObjectId>16401</ObjectId>
+      <Outdated>1</Outdated>
       <Owner>postgres</Owner>
       <StateNumber>518</StateNumber>
     </table>
     <table id="32" parent="16" name="users">
       <ObjectId>16406</ObjectId>
+      <Outdated>1</Outdated>
       <Owner>postgres</Owner>
       <StateNumber>518</StateNumber>
     </table>

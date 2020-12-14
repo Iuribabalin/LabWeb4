@@ -26,9 +26,7 @@ public class RegPath {
         String username = object.optString("userNameReg");
         String password = object.optString("passReg");
 
-        String result = auth.register(username, password);
-
-        return result;
+        return auth.register(username, password);
     }
 }
 

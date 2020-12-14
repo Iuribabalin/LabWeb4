@@ -26,11 +26,6 @@ public class LoginPath {
         String username = object.optString("username");
         String password = object.optString("pass");
 
-        String result = auth.login(username, password);
-
-        if (result.equals("No such user found") || result.equals("Not authorized")){
-            return "403";
-        }
-        else return result;
+        return auth.login(username, password);
     }
 }
