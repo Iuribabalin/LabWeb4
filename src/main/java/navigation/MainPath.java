@@ -35,7 +35,7 @@ public class MainPath {
         if (Integer.parseInt(pointsFlag) == 1 || pointsFlag == "true") {
             String result = points.addPoint(token, x, y, r);
             if (result.equals("Unauthorized") || result.equals("Bad format")) {
-                return "403";
+                return "false";
             } else return result;
         }
         else {

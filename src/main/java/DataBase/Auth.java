@@ -1,9 +1,11 @@
 package DataBase;
 
+import model.Point;
 import model.User;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import java.nio.charset.StandardCharsets;
+import java.util.Arrays;
 import java.util.Base64;
 
 @Stateless //Вся бизнес логика про авторизацию
@@ -33,16 +35,13 @@ public class Auth {
             //userDB.findUser(user).generateAccessToken();
             //userDB.saveUser(userDB.findUser(user));
             //Кодирование логина и пароля
-            return "true;" + Base64.getEncoder().encodeToString((login + (char) (31) + userDB.findUser(user).getAccessToken()).getBytes(StandardCharsets.UTF_8));
+
+            return "true;" + login;
         }
         return "false;-1";
     }
 
-    public User getUserByToken(String data){ //Пооск пользователя по переданным данным дальнейшего взятия точек
-        /*String token = new String(Base64.getDecoder().decode(data), StandardCharsets.UTF_8);
-        String[] split = token.split(String.valueOf((char) (31)));
-        String username = split[0];
-        return userDB.findUser(username);*/
-        return null;
+    public User getUserByToken(String login){ //Пооск пользователя по переданным данным дальнейшего взятия точек
+        return userDB.findUser(login);
     }
 }
