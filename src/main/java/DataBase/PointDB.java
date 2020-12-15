@@ -17,17 +17,17 @@ public class PointDB {
     public Point createPoint(Double x, Double y, Double r, User user) { //Создание точки
 
         try {
-            final Point entity = new Point();
-            entity.setOwner(user);
-            entity.setR(r);
-            entity.setX(x);
-            entity.setY(y);
-            entity.check(); //Проверка на зону
+            final Point point = new Point();
+            point.setOwner(user);
+            point.setR(r);
+            point.setX(x);
+            point.setY(y);
+            point.check(); //Проверка на зону
             em.getTransaction().begin();
-            em.persist(entity);
+            em.persist(point);
             em.getTransaction().commit();
 
-            return entity;
+            return point;
         } catch (PersistenceException e) {
             return null;
         }
@@ -47,7 +47,7 @@ public class PointDB {
     }
 
     public List findPoint(User owner) { //Поиск точек у пользователя
-        return em.createQuery("from Point where owner = :owner ")
+        return em.createQuery("from Point p where p.owner = :owner ")
                 .setParameter("owner", owner).getResultList();
     }
 }

@@ -49,7 +49,7 @@ public class Point {
     public void check() {
         if ((x == null) || (y == null) || (r == null))
             throw new NullPointerException();
-        this.result = (x >= 0 && y <= 0 && y <= 2 * x - r) ||
+        this.result = (x >= 0 && y <= 0 && y >= 2 * x - r) ||
                 (x <= 0 && y >= 0 && x >= -r && y <= r / 2) ||
                 (x <= 0 && y <= 0 && x * x + y * y <= r * r);
     }

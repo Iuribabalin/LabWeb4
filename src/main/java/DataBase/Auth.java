@@ -26,15 +26,28 @@ public class Auth {
 
     }
 
-    public String login(String login, String password) { //Вход - передача логина и пароля
+    public String logout(String login) {
         String user = userDB.ifExist(login);
         if (user.equals("false1") || user.equals("false2")){
             return "false; ";
         }
+        else  {
+            userDB.findUser(login).setLoginController("false");
+            userDB.saveUser(userDB.findUser(login));
+
+            return "true;" + login;
+        }
+    }
+
+    public String login(String login, String password) { //Вход - передача логина и пароля
+        String user = userDB.ifExist(login);
+
+        if (user.equals("false1") || user.equals("false2")){
+            return "false; ";
+        }
         else if (userDB.checkPassword(login, password)) {
-            //userDB.findUser(user).generateAccessToken();
-            //userDB.saveUser(userDB.findUser(user));
-            //Кодирование логина и пароля
+            userDB.findUser(login).setLoginController("true");
+            userDB.saveUser(userDB.findUser(login));
 
             return "true;" + login;
         }

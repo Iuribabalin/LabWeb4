@@ -26,6 +26,15 @@ public class User {
     @Column(name = "access_token") //ѕерсональный неповтор€ющийс€ токен
     private String accessToken;
 
+    @Column(name = "login_controller") //ѕерсональный неповтор€ющийс€ токен
+    private String loginController;
+
+    public void setLoginController(String loginController) {
+        this.loginController = loginController;
+    }
+    public String getLoginController() {
+        return loginController;
+    }
     public Long getId() {
         return id;
     }

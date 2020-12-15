@@ -791,7 +791,7 @@ false posixrules
       <ObjectId>13318</ObjectId>
       <Comment>default administrative connection database</Comment>
       <Owner>postgres</Owner>
-      <IntrospectionStateNumber>531</IntrospectionStateNumber>
+      <IntrospectionStateNumber>551</IntrospectionStateNumber>
       <Current>1</Current>
     </database>
     <role id="3" parent="1" name="pg_execute_server_program">
@@ -862,7 +862,7 @@ UC/10
 </Acl>
       <StateNumber>276</StateNumber>
       <Owner>postgres</Owner>
-      <IntrospectionStateNumber>532</IntrospectionStateNumber>
+      <IntrospectionStateNumber>552</IntrospectionStateNumber>
       <Current>1</Current>
     </schema>
     <extension id="17" parent="2" name="adminpack">
@@ -971,63 +971,63 @@ UC/10
       <Type>index</Type>
     </access-method>
     <sequence id="30" parent="16" name="id_seq">
-      <ObjectId>16416</ObjectId>
+      <ObjectId>16438</ObjectId>
       <Owner>postgres</Owner>
-      <StateNumber>517</StateNumber>
+      <StateNumber>548</StateNumber>
       <SequenceIdentity>null+50</SequenceIdentity>
       <DataType>bigint|0s</DataType>
     </sequence>
     <table id="31" parent="16" name="points">
-      <ObjectId>16401</ObjectId>
+      <ObjectId>16423</ObjectId>
       <Owner>postgres</Owner>
-      <StateNumber>518</StateNumber>
+      <StateNumber>549</StateNumber>
     </table>
     <table id="32" parent="16" name="users">
-      <ObjectId>16406</ObjectId>
+      <ObjectId>16428</ObjectId>
       <Owner>postgres</Owner>
-      <StateNumber>518</StateNumber>
+      <StateNumber>549</StateNumber>
     </table>
     <column id="33" parent="31" name="id">
       <Position>1</Position>
       <DataType>bigint|0s</DataType>
       <NotNull>1</NotNull>
-      <StateNumber>513</StateNumber>
+      <StateNumber>544</StateNumber>
       <TypeId>20</TypeId>
     </column>
     <column id="34" parent="31" name="r">
       <Position>2</Position>
       <DataType>double precision|0s</DataType>
-      <StateNumber>513</StateNumber>
+      <StateNumber>544</StateNumber>
       <TypeId>701</TypeId>
     </column>
     <column id="35" parent="31" name="result">
       <Position>3</Position>
       <DataType>boolean|0s</DataType>
       <NotNull>1</NotNull>
-      <StateNumber>513</StateNumber>
+      <StateNumber>544</StateNumber>
       <TypeId>16</TypeId>
     </column>
     <column id="36" parent="31" name="x">
       <Position>4</Position>
       <DataType>double precision|0s</DataType>
-      <StateNumber>513</StateNumber>
+      <StateNumber>544</StateNumber>
       <TypeId>701</TypeId>
     </column>
     <column id="37" parent="31" name="y">
       <Position>5</Position>
       <DataType>double precision|0s</DataType>
-      <StateNumber>513</StateNumber>
+      <StateNumber>544</StateNumber>
       <TypeId>701</TypeId>
     </column>
     <column id="38" parent="31" name="owner_id">
       <Position>6</Position>
       <DataType>bigint|0s</DataType>
-      <StateNumber>513</StateNumber>
+      <StateNumber>544</StateNumber>
       <TypeId>20</TypeId>
     </column>
     <index id="39" parent="31" name="points_pkey">
-      <ObjectId>16404</ObjectId>
-      <StateNumber>513</StateNumber>
+      <ObjectId>16426</ObjectId>
+      <StateNumber>544</StateNumber>
       <ColNames>id</ColNames>
       <Unique>1</Unique>
       <Primary>1</Primary>
@@ -1036,17 +1036,17 @@ UC/10
       <ClassIds>3124</ClassIds>
     </index>
     <key id="40" parent="31" name="points_pkey">
-      <ObjectId>16405</ObjectId>
-      <StateNumber>513</StateNumber>
+      <ObjectId>16427</ObjectId>
+      <StateNumber>544</StateNumber>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
       <UnderlyingIndexName>points_pkey</UnderlyingIndexName>
     </key>
     <foreign-key id="41" parent="31" name="fk3eajci7lm214asl13delp7auu">
-      <ObjectId>16418</ObjectId>
-      <StateNumber>518</StateNumber>
+      <ObjectId>16440</ObjectId>
+      <StateNumber>549</StateNumber>
       <ColNames>owner_id</ColNames>
-      <RefTableId>16406</RefTableId>
+      <RefTableId>16428</RefTableId>
       <RefColPositions>1</RefColPositions>
       <RefTableName>users</RefTableName>
       <RefKeyName>users_pkey</RefKeyName>
@@ -1056,30 +1056,36 @@ UC/10
       <Position>1</Position>
       <DataType>bigint|0s</DataType>
       <NotNull>1</NotNull>
-      <StateNumber>514</StateNumber>
+      <StateNumber>545</StateNumber>
       <TypeId>20</TypeId>
     </column>
     <column id="43" parent="32" name="access_token">
       <Position>2</Position>
       <DataType>varchar(255)|0s</DataType>
-      <StateNumber>514</StateNumber>
+      <StateNumber>545</StateNumber>
       <TypeId>1043</TypeId>
     </column>
     <column id="44" parent="32" name="login">
       <Position>3</Position>
       <DataType>varchar(255)|0s</DataType>
-      <StateNumber>514</StateNumber>
+      <StateNumber>545</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <column id="45" parent="32" name="password">
+    <column id="45" parent="32" name="login_controller">
       <Position>4</Position>
       <DataType>varchar(255)|0s</DataType>
-      <StateNumber>514</StateNumber>
+      <StateNumber>545</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <index id="46" parent="32" name="users_pkey">
-      <ObjectId>16412</ObjectId>
-      <StateNumber>514</StateNumber>
+    <column id="46" parent="32" name="password">
+      <Position>5</Position>
+      <DataType>varchar(255)|0s</DataType>
+      <StateNumber>545</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <index id="47" parent="32" name="users_pkey">
+      <ObjectId>16434</ObjectId>
+      <StateNumber>545</StateNumber>
       <ColNames>id</ColNames>
       <Unique>1</Unique>
       <Primary>1</Primary>
@@ -1087,9 +1093,9 @@ UC/10
       <CollationIds>0</CollationIds>
       <ClassIds>3124</ClassIds>
     </index>
-    <index id="47" parent="32" name="uk_66tpbeikvdu58etulplfhavyy">
-      <ObjectId>16414</ObjectId>
-      <StateNumber>516</StateNumber>
+    <index id="48" parent="32" name="uk_66tpbeikvdu58etulplfhavyy">
+      <ObjectId>16436</ObjectId>
+      <StateNumber>547</StateNumber>
       <ColNames>login</ColNames>
       <Unique>1</Unique>
       <AccessMethodId>403</AccessMethodId>
@@ -1097,16 +1103,16 @@ UC/10
       <CollationNames>default</CollationNames>
       <ClassIds>3126</ClassIds>
     </index>
-    <key id="48" parent="32" name="users_pkey">
-      <ObjectId>16413</ObjectId>
-      <StateNumber>514</StateNumber>
+    <key id="49" parent="32" name="users_pkey">
+      <ObjectId>16435</ObjectId>
+      <StateNumber>545</StateNumber>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
       <UnderlyingIndexName>users_pkey</UnderlyingIndexName>
     </key>
-    <key id="49" parent="32" name="uk_66tpbeikvdu58etulplfhavyy">
-      <ObjectId>16415</ObjectId>
-      <StateNumber>516</StateNumber>
+    <key id="50" parent="32" name="uk_66tpbeikvdu58etulplfhavyy">
+      <ObjectId>16437</ObjectId>
+      <StateNumber>547</StateNumber>
       <ColNames>login</ColNames>
       <UnderlyingIndexName>uk_66tpbeikvdu58etulplfhavyy</UnderlyingIndexName>
     </key>

@@ -14,15 +14,16 @@ public class UserDB {
     public User createUser(String login, String password) { //Создание пользователя
         try {
 
-            final User entity = new User();
-            entity.setLogin(login);
+            final User user = new User();
+            user.setLogin(login);
             //entity.setPassword(Base64.getEncoder().encodeToString((password).getBytes())); //Кодирование пароля
-            entity.setPassword(password);
+            user.setPassword(password);
+            user.setLoginController("false");
             em.getTransaction().begin();
-            em.persist(entity);
+            em.persist(user);
             em.getTransaction().commit();
 
-            return entity;
+            return user;
 
         } catch (PersistenceException e) {
             return null;
