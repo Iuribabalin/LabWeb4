@@ -13,11 +13,13 @@ public class UserDB {
 
     public User createUser(String login, String password) { //Создание пользователя
         try {
-
             final User user = new User();
+            final String hash = Hash.SHA(password);
+
             user.setLogin(login);
             //entity.setPassword(Base64.getEncoder().encodeToString((password).getBytes())); //Кодирование пароля
-            user.setPassword(password);
+            user.setPassword(hash);
+            //user.setPassword(password);
             user.setLoginController("false");
             em.getTransaction().begin();
             em.persist(user);
@@ -48,7 +50,7 @@ public class UserDB {
         User user = findUser(login);
 
         //return user.getPassword().equals(new String(Base64.getDecoder().decode((password)))); //Декодирование
-        return user.getPassword().equals(password);
+        return user.getPassword().equals(Hash.SHA(password));
     }
 
     public String ifExist(String login) { //Поиск существующего логина
